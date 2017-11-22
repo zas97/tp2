@@ -70,15 +70,15 @@ TrajetSimple::~TrajetSimple ( )
     delete [] destination;
 } //----- Fin de ~TrajetSimple
 
-void TrajetSimple::afficher(void){
-    cout<<"de "<<depart<<" a "<<destination<<" en "<<"MT"<<transport<<endl;
+void TrajetSimple::afficher(void) const{
+    cout<<"de "<<depart<<" a "<<destination<<" en "<<"MT"<<transport;
 }
 
-const char * TrajetSimple::getDepart() {
+const char * TrajetSimple::getDepart() const{
     return depart;
 }
 
-const char * TrajetSimple::getDestination() {
+const char * TrajetSimple::getDestination() const{
     return destination;
 }
 

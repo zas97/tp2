@@ -16,6 +16,7 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "TabTrajets.h"
+#include "TrajetSimple.h"
 #include "TrajetCompose.h"
 
 //------------------------------------------------------------- Constantes
@@ -36,10 +37,38 @@ bool TabTrajets::ajouterTrajet(const Trajet & t)
     tabTrajets[nElements] = t.clone();
     ++nElements;
     return true;
+}
 
+bool TabTrajets::ajouterTrajet( char * depart, char * destination,crduTransport transport)
+{
+    if(nElements >= taille){
+        return false;
+    }
+    tabTrajets[nElements] = new TrajetSimple(depart,destination,transport);
+    ++nElements;
+    return true;
 
 }
-int TabTrajets::getNelements() {
+
+bool TabTrajets::ajouterTrajet( char ** departs, char ** destinations,crduTransport * transports)
+{
+    if(nElements >= taille){
+        return false;
+    }
+    int nbElements = sizeof(transports)/sizeof(crduTransport);
+
+    TrajetCompose * tc = new TrajetCompose(nbElements);
+    for(int i=0;i<nbElements;i++){
+        tc->ajouterTrajet(departs[i],destinations[i],transports[i]);
+    }
+    tabTrajets[nElements] = tc;
+    ++nElements;
+    return true;
+
+}
+
+
+const int TabTrajets::getNelements() {
     return nElements;
 }
 
@@ -54,7 +83,9 @@ void TabTrajets::afficher()
 {
     for(int i=0;i<nElements;i++)
     {
+        cout<<i+1<<" : ";
         tabTrajets[i]->afficher();
+        cout<<endl;
     }
 }
 
@@ -90,7 +121,7 @@ TabTrajets::TabTrajets (const TabTrajets & tab){
     nElements = 0;
     tabTrajets = new Trajet * [taille];
     for(int i=0;i<tab.nElements;i++){
-        ajouterTrajet(*tab.getElement(i));
+        ajouterTrajet(*tab.tabTrajets[i]);
     }
 
 }

@@ -3,36 +3,58 @@
 #include "TrajetSimple.h"
 #include "TabTrajets.h"
 #include "TrajetCompose.h"
+#include "Catalogue.h"
 using namespace std;
 
 
-void test(TabTrajets &tab){
-    TrajetSimple t("Barcelone","Lleida",Avion);
-    TrajetSimple t2("Lyon","Lleida",Train);
-    tab.ajouterTrajet(t);
-    tab.ajouterTrajet(t2);
-//    t.afficher();
+//void ajouterTrajets(Catalogue & catalogue){
+//    //TS1
+//    catalogue.ajouterTrajet("Lyon","Bordeaux",Train);
+//
+//    //TC2
+//    char * departs[] = {"Lyon","Marseille"};
+//    char * destinations[] = {"Marseille","Paris"};
+//    crduTransport transports[] = {Bateau,Avion};
+//    catalogue.ajouterTrajet(departs,destinations,transports);
+////    TrajetCompose tc(2);
+////    tc.ajouterTrajet("Lyon","Marseille",Bateau);
+////    tc.ajouterTrajet("Marseille","Paris",Avion);
+////    catalogue.ajouterTrajet(tc);
+//
+//
+//    //TS3
+//    catalogue.ajouterTrajet("Lyon","Paris",Auto);
+//
+//
+//}
+
+void ajouterTrajets(Catalogue & catalogue){
+    //TS1
+    TrajetSimple ts1("Lyon","Bordeaux",Train);
+    catalogue.ajouterTrajet(ts1);
+
+    //TC2
+    TrajetCompose tc(2);
+    tc.ajouterTrajet("Lyon","Marseille",Bateau);
+    tc.ajouterTrajet("Marseille","Paris",Avion);
+    catalogue.ajouterTrajet(tc);
+
+
+    //TS3
+    TrajetSimple ts3("Lyon","Bordeaux",Train);
+    catalogue.ajouterTrajet(ts3);
+
+
 }
 
 
 
+
+
+
 int main() {
+    Catalogue catalogue(3);
+    ajouterTrajets(catalogue);
+    catalogue.afficher();
 
-    TabTrajets tab(2);
-    test(tab);
-//    tab.getElement(0)->afficher();
-//    cout<<endl;
-//    tab.getElement(1)->afficher();
-//    cout<<tab.getTaille()<<endl;
-//    cout<<tab.getElement(0)->getDestination()<<endl;
-//    cout<<tab.getElement(0)->getDepart()<<endl;
-    TrajetCompose tc(tab);
-//    tab.afficher();
-
-    tc.afficher();
-    
-//    tc.afficher();
-
-
-    return 0;
 }

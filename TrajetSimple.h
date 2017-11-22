@@ -38,19 +38,19 @@ public:
     //
 
 
-    const char * getDestination();
+    virtual const char * getDestination() const;
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    const char * getDepart();
+    virtual const char * getDepart() const;
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    virtual void afficher();
+    virtual void afficher() const;
     // Mode d'emploi :
     //
     // Contrat :

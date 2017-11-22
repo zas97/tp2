@@ -16,6 +16,7 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "Catalogue.h"
+#include "cstring"
 
 //------------------------------------------------------------- Constantes
 
@@ -50,25 +51,24 @@ void Catalogue::recherche(const char *depart, const char *destination,bool * uti
 }
 
 //------------------------------------------------- Surcharge d'opérateurs
-Catalogue & Catalogue::operator = ( const Catalogue & unCatalogue )
-// Algorithme :
-//
-{
-} //----- Fin de operator =
+
 
 
 //-------------------------------------------- Constructeurs - destructeur
-Catalogue::Catalogue ( const Catalogue & unCatalogue )
+Catalogue::Catalogue ( const Catalogue & unCatalogue ) : TabTrajets(unCatalogue.taille)
 // Algorithme :
 //
 {
 #ifdef MAP
     cout << "Appel au constructeur de copie de <Catalogue>" << endl;
 #endif
+    for(int i=0;i<unCatalogue.nElements;i++){
+        ajouterTrajet(*unCatalogue.tabTrajets[i]);
+    }
 } //----- Fin de Catalogue (constructeur de copie)
 
 
-Catalogue::Catalogue (int t ) : TabTrajets(t)
+Catalogue::Catalogue (int t) : TabTrajets(t)
 // Algorithme :
 //
 {

@@ -10,6 +10,7 @@
 #if ! defined ( TrajetCompose_H )
 #define TrajetCompose_H
 #include "Trajet.h"
+#include "TabTrajets.h"
 
 //--------------------------------------------------- Interfaces utilisées
 
@@ -23,25 +24,25 @@
 //
 //------------------------------------------------------------------------
 
-class TabTrajets;
 
-class TrajetCompose : public Trajet
+
+class TrajetCompose : public Trajet, public TabTrajets
 {
 //----------------------------------------------------------------- PUBLIC
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    void afficher();
+    void afficher() const;
     // type Méthode ( liste des paramètres );
     // Mode d'emploi :
     //
     // Contrat :
     //
-    const char * getDepart();
+    const char * getDepart() const;
 
-    const char * getDestination();
+    const char * getDestination() const;
 
-    virtual TrajetCompose * clone() const;
+    TrajetCompose * clone() const;
 
 
 
@@ -61,7 +62,7 @@ public:
     TrajetCompose(const TrajetCompose & t);
 
 
-    virtual ~TrajetCompose ( );
+    ~TrajetCompose ( );
     // Mode d'emploi :
     //
     // Contrat :
@@ -76,7 +77,7 @@ protected:
 
 
 //----------------------------------------------------- Attributs protégés
-TabTrajets * tabTrajets;
+
 
 
 };

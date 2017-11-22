@@ -40,6 +40,18 @@ public:
     //
     // Contrat :
     //
+    bool ajouterTrajet( char * depart, char * destination,crduTransport transport);
+    // type Méthode ( liste des paramètres );
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
+    bool ajouterTrajet(char ** departs,  char ** destinations, crduTransport * transports);
+    // type Méthode ( liste des paramètres );
+    // Mode d'emploi :
+    //
+    // Contrat :
+    //
     Trajet * getElement(int pos) const;
     // type Méthode ( liste des paramètres );
     // Mode d'emploi :
@@ -52,13 +64,13 @@ public:
     //
     // Contrat :
     //
-    void afficher();
+    virtual void afficher();
     // type Méthode ( liste des paramètres );
     // Mode d'emploi :
     //
     // Contrat :
     //
-    int getNelements();
+    const int getNelements();
 
 
 //------------------------------------------------- Surcharge d'opérateurs

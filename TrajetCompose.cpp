@@ -16,7 +16,6 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "TrajetCompose.h"
-#include "TabTrajets.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -28,17 +27,20 @@ using namespace std;
 //
 //{
 //} //----- Fin de Méthode
-void TrajetCompose::afficher() {
-    cout<<"trajet compose de "<<getDepart()<<" a "<<getDestination()<<" avec: "<<endl;
-    tabTrajets->afficher();
+void TrajetCompose::afficher() const{
+    cout<<"TC ";
+    for(int i=0;i<nElements;i++){
+        tabTrajets[i]->afficher();
+        if(i!=nElements-1) cout<<" - ";
+    }
 
 }
-const char * TrajetCompose::getDepart() {
-    return tabTrajets->getElement(0)->getDepart();
+const char * TrajetCompose::getDepart() const{
+    return tabTrajets[0]->getDepart();
 }
 
-const char * TrajetCompose::getDestination() {
-    return tabTrajets->getElement(tabTrajets->getNelements()-1)->getDestination();
+const char * TrajetCompose::getDestination() const{
+    return tabTrajets[nElements-1]->getDestination();
 }
 
 TrajetCompose * TrajetCompose::clone() const{
@@ -51,34 +53,37 @@ TrajetCompose * TrajetCompose::clone() const{
 
 
 
-TrajetCompose::TrajetCompose ( int t)
+TrajetCompose::TrajetCompose ( int t) : TabTrajets(t)
 // Algorithme :
 //
 {
 #ifdef MAP
     cout << "Appel au constructeur de <TrajetCompose>" << endl;
 #endif
-    tabTrajets = new TabTrajets(t);
+
 
 } //----- Fin de TrajetCompose
 
-TrajetCompose::TrajetCompose ( const TabTrajets & tab )
+TrajetCompose::TrajetCompose ( const TabTrajets & tab ) : TabTrajets(tab)
 // Algorithme :
 //
 {
 #ifdef MAP
     cout << "Appel au constructeur de <TrajetCompose>" << endl;
 #endif
-    tabTrajets = new TabTrajets(tab);
+
 
 } //----- Fin de TrajetCompose
 
-TrajetCompose::TrajetCompose(const TrajetCompose & t){
-    tabTrajets = new TabTrajets(*t.tabTrajets);
+TrajetCompose::TrajetCompose(const TrajetCompose & t) : TabTrajets(t.taille)
+{
+    for(int i=0;i<t.nElements;i++){
+        ajouterTrajet(*t.tabTrajets[i]);
+    }
 }
 
 TrajetCompose::~TrajetCompose() {
-    delete tabTrajets;
+
 }
 
 

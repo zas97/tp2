@@ -61,11 +61,9 @@ Trajet::~Trajet ( )
 
 } //----- Fin de ~Trajet
 
-void Trajet::afficher(void){
-
-}
-const char * Trajet::getDestination() {}
-const char * Trajet::getDepart() {}
+//void Trajet::afficher(void) const{}
+//const char * Trajet::getDestination() const{}
+//const char * Trajet::getDepart() const{}
 
 
 //------------------------------------------------------------------ PRIVE

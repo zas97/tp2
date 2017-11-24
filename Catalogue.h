@@ -61,7 +61,7 @@ public:
 
 protected:
 //----------------------------------------------------- Méthodes protégées
-void recherche(const char* depart,const char* destination,bool * utilise);
+    bool recherche(const char *depart, const char *destination, bool *utilise, int *parcours, int index);
 
 //----------------------------------------------------- Attributs protégés
 

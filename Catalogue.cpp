@@ -28,22 +28,33 @@ using namespace std;
 //
 //{
 //} //----- Fin de Méthode
-void Catalogue::recherche(const char * depart,const char * destination) {
+void Catalogue::recherche(const char * depart,const char * destination)
+{
     bool utilise[nElements];
     for(int i=0;i<nElements;i++){
         utilise[i]=false;
     }
-    recherche(depart,destination,utilise);
+    int * parcours = new int [nElements];
+    recherche(depart, destination, utilise, parcours, 0);
+    cout<<endl;
 }
-void Catalogue::recherche(const char *depart, const char *destination,bool * utilise) {
+
+bool Catalogue::recherche(const char *depart, const char *destination, bool *utilise, int *parcours, int index)
+{
     if(strcmp(depart,destination)==0){
 
+        cout<<"(";
+        for(int i=0;i<index-1;i++){
+            cout<<"T"<<parcours[i]<<"+";
+        }
+        cout<<"T"<<parcours[index-1]<<") ";
     }
-    for(int i=0;i<taille;i++){
+    for(int i=0;i<nElements;i++){
         if(!utilise[i]){
             if(strcmp(depart,tabTrajets[i]->getDepart())==0){
                 utilise[i]=true;
-                recherche(tabTrajets[i]->getDepart(),destination,utilise);
+                parcours[index]=i+1;
+                recherche(tabTrajets[i]->getDestination(),destination,utilise,parcours,index+1);
                 utilise[i]=false;
             }
         }

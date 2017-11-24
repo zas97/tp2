@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 #include "Trajet.h"
 #include "TrajetSimple.h"
 #include "TabTrajets.h"
@@ -44,6 +45,8 @@ void ajouterTrajets(Catalogue & catalogue){
     TrajetSimple ts3("Lyon","Bordeaux",Train);
     catalogue.ajouterTrajet(ts3);
 
+    catalogue.ajouterTrajet("Bordeaux","Paris",Train);
+
 
 }
 
@@ -53,8 +56,9 @@ void ajouterTrajets(Catalogue & catalogue){
 
 
 int main() {
-    Catalogue catalogue(3);
+    Catalogue catalogue(10);
     ajouterTrajets(catalogue);
     catalogue.afficher();
+    catalogue.recherche("Lyon","Paris");
 
 }

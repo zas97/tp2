@@ -31,29 +31,35 @@ using namespace std;
 //} //----- Fin de Méthode
 bool TabTrajets::ajouterTrajet(const Trajet & t)
 {
+    bool ajuste = false;
     if(nElements >= taille){
-        return false;
+        ajusterTaille(1);
+        ajuste=true;
     }
     tabTrajets[nElements] = t.clone();
     ++nElements;
-    return true;
+    return ajuste;
 }
 
 bool TabTrajets::ajouterTrajet( char * depart, char * destination,crduTransport transport)
 {
+    bool ajuste = false;
     if(nElements >= taille){
-        return false;
+        ajusterTaille(1);
+        ajuste=true;
     }
     tabTrajets[nElements] = new TrajetSimple(depart,destination,transport);
     ++nElements;
-    return true;
+    return ajuste;
 
 }
 
-bool TabTrajets::ajouterTrajet( char ** departs, char ** destinations,crduTransport * transports)
+bool TabTrajets::ajouterTrajet(char **departs, char **destinations, crduTransport *transports)
 {
+    bool ajuste = false;
     if(nElements >= taille){
-        return false;
+        ajusterTaille(1);
+        ajuste=true;
     }
     int nbElements = sizeof(transports)/sizeof(crduTransport);
 
@@ -63,23 +69,39 @@ bool TabTrajets::ajouterTrajet( char ** departs, char ** destinations,crduTransp
     }
     tabTrajets[nElements] = tc;
     ++nElements;
-    return true;
+    return ajuste;
 
 }
 
 
-const int TabTrajets::getNelements() {
+int TabTrajets::getNelements() const
+{
     return nElements;
 }
 
 
 
 
-int TabTrajets::getTaille() {
+int TabTrajets::getTaille() const
+{
     return taille;
 }
 
-void TabTrajets::afficher()
+bool TabTrajets::ajusterTaille(int delta)
+{
+    if(delta + taille < nElements)
+        return false;
+    taille += delta;
+    Trajet ** newTab = new Trajet* [taille];
+    for(int i=0;i<nElements;i++){
+        newTab[i] = tabTrajets[i];
+    }
+    Trajet ** aux = tabTrajets;
+    tabTrajets = newTab;
+    delete [] aux;
+}
+
+void TabTrajets::afficher() const
 {
     for(int i=0;i<nElements;i++)
     {

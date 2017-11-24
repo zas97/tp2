@@ -62,6 +62,7 @@ Catalogue::Catalogue ( const Catalogue & unCatalogue ) : TabTrajets(unCatalogue.
 #ifdef MAP
     cout << "Appel au constructeur de copie de <Catalogue>" << endl;
 #endif
+    int x;
     for(int i=0;i<unCatalogue.nElements;i++){
         ajouterTrajet(*unCatalogue.tabTrajets[i]);
     }

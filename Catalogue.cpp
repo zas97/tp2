@@ -34,7 +34,7 @@ int Catalogue::recherche(const char *depart, const char *destination) const
     for(int i=0;i<nElements;i++){
         utilise[i]=false;
     }
-    int * parcours = new int [nElements];
+    int parcours[nElements];
     int count = 0;
     recherche(depart, destination, utilise, parcours, 0, count);
     cout<<endl;

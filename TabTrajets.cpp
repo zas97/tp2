@@ -16,7 +16,6 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "TabTrajets.h"
-#include "TrajetSimple.h"
 #include "TrajetCompose.h"
 
 //------------------------------------------------------------- Constantes
@@ -99,6 +98,7 @@ bool TabTrajets::AjusterTaille(int delta)
     Trajet ** aux = tabTrajets;
     tabTrajets = newTab;
     delete [] aux;
+    return true;
 }
 
 void TabTrajets::Afficher() const

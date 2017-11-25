@@ -30,14 +30,16 @@ using namespace std;
 //} //----- Fin de Méthode
 int Catalogue::Recherche(const char *depart, const char *destination) const
 {
-    bool utilise[nElements];
+    bool * utilise = new bool[nElements];
     for(int i=0;i<nElements;i++){
         utilise[i]=false;
     }
-    int parcours[nElements];
+    int * parcours = new int[nElements];
     int count = 0;
     Recherche(depart, destination, utilise, parcours, 0, count);
     cout<<endl;
+    delete [] parcours;
+    delete [] utilise;
     return count;
 }
 

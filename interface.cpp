@@ -6,8 +6,7 @@ using namespace std;
 
 
 crduTransport getTransport(){
-    bool ok = false;
-    while(!ok) {
+    while(true) {
         cout << "1: Train" << endl;
         cout << "2: Auto" << endl;
         cout << "3: Bateau" << endl;
@@ -22,6 +21,7 @@ crduTransport getTransport(){
         }
         return static_cast<crduTransport > (transport);
     }
+
 
 }
 
@@ -38,7 +38,7 @@ int main(){
     cout<<"2: ajouter un trajet compose"<<endl;
     cout<<"3: Afficher la liste de trajets"<<endl;
     cout<<"4: rechercher un parcours"<<endl<<endl;
-    cout<<"tapez le numero de l'action que vous voulez realiser"<<endl;
+    cout<<"tapez le numero de l'action que vous voulez realiser, tapez -1 pour sortir"<<endl;
     while(cin>>ordre && ordre !=-1){
         switch(ordre){
             case 1 : {
@@ -95,6 +95,10 @@ int main(){
                 cout<<endl;
 
                 break;
+            }
+            default :{
+                cout<<"s'il tu plait, selectione un ordre dans la liste"<<endl;
+                cout<<endl;
             }
 
 

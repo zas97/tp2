@@ -27,10 +27,10 @@ using namespace std;
 //
 //{
 //} //----- Fin de Méthode
-void TrajetCompose::afficher() const{
+void TrajetCompose::Afficher() const{
     cout<<"TC ";
     for(int i=0;i<nElements;i++){
-        tabTrajets[i]->afficher();
+        tabTrajets[i]->Afficher();
         if(i!=nElements-1) cout<<" - ";
     }
 
@@ -43,7 +43,7 @@ const char * TrajetCompose::getDestination() const{
     return tabTrajets[nElements-1]->getDestination();
 }
 
-TrajetCompose * TrajetCompose::clone() const{
+TrajetCompose * TrajetCompose::Clone() const{
     return new TrajetCompose(*this);
 }
 
@@ -78,7 +78,7 @@ TrajetCompose::TrajetCompose ( const TabTrajets & tab ) : TabTrajets(tab)
 TrajetCompose::TrajetCompose(const TrajetCompose & t) : TabTrajets(t.taille)
 {
     for(int i=0;i<t.nElements;i++){
-        ajouterTrajet(*t.tabTrajets[i]);
+        AjouterTrajet(*t.tabTrajets[i]);
     }
 }
 

@@ -50,12 +50,12 @@ public:
     // Contrat :
     //
 
-    virtual void afficher() const;
+    virtual void Afficher() const;
     // Mode d'emploi :
     //
     // Contrat :
     //
-    virtual TrajetSimple * clone() const;
+    virtual TrajetSimple * Clone() const;
     // Mode d'emploi :
     //
     // Contrat :

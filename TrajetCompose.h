@@ -32,7 +32,7 @@ class TrajetCompose : public Trajet, public TabTrajets
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    void afficher() const;
+    void Afficher() const;
     // type Méthode ( liste des paramètres );
     // Mode d'emploi :
     //
@@ -42,7 +42,7 @@ public:
 
     const char * getDestination() const;
 
-    TrajetCompose * clone() const;
+    TrajetCompose * Clone() const;
 
 
 

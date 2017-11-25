@@ -61,7 +61,7 @@ Trajet::~Trajet ( )
 
 } //----- Fin de ~Trajet
 
-//void Trajet::afficher(void) const{}
+//void Trajet::Afficher(void) const{}
 //const char * Trajet::getDestination() const{}
 //const char * Trajet::getDepart() const{}
 

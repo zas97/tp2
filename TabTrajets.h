@@ -34,19 +34,19 @@ class TabTrajets
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    bool ajouterTrajet(const Trajet & t);
+    bool AjouterTrajet(const Trajet &t);
     // type Méthode ( liste des paramètres );
     // Mode d'emploi :
     //
     // Contrat :
     //
-    bool ajouterTrajet( char * depart, char * destination,crduTransport transport);
+    bool AjouterTrajet(char *depart, char *destination, crduTransport transport);
     // type Méthode ( liste des paramètres );
     // Mode d'emploi :
     //
     // Contrat :
     //
-    bool ajouterTrajet(char **departs, char **destinations, crduTransport *transports);
+    bool AjouterTrajet(char **departs, char **destinations, crduTransport *transports);
     // type Méthode ( liste des paramètres );
     // Mode d'emploi :
     //
@@ -64,7 +64,7 @@ public:
     //
     // Contrat :
     //
-    virtual void afficher() const;
+    virtual void Afficher() const;
     // type Méthode ( liste des paramètres );
     // Mode d'emploi :
     //
@@ -76,7 +76,7 @@ public:
     //
     // Contrat :
     //
-    bool ajusterTaille(int delta);
+    bool AjusterTaille(int delta);
     // Mode d'emploi :
     //
     // Contrat :

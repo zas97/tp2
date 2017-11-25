@@ -28,7 +28,7 @@ using namespace std;
 //
 //{
 //} //----- Fin de Méthode
-int Catalogue::recherche(const char *depart, const char *destination) const
+int Catalogue::Recherche(const char *depart, const char *destination) const
 {
     bool utilise[nElements];
     for(int i=0;i<nElements;i++){
@@ -36,12 +36,12 @@ int Catalogue::recherche(const char *depart, const char *destination) const
     }
     int parcours[nElements];
     int count = 0;
-    recherche(depart, destination, utilise, parcours, 0, count);
+    Recherche(depart, destination, utilise, parcours, 0, count);
     cout<<endl;
     return count;
 }
 
-void Catalogue::recherche(const char *depart, const char *destination, bool *utilise, int *parcours, int index,
+void Catalogue::Recherche(const char *depart, const char *destination, bool *utilise, int *parcours, int index,
                           int &count) const
 {
     if(strcmp(depart,destination)==0){
@@ -57,7 +57,7 @@ void Catalogue::recherche(const char *depart, const char *destination, bool *uti
             if(strcmp(depart,tabTrajets[i]->getDepart())==0){
                 utilise[i]=true;
                 parcours[index]=i+1;
-                recherche(tabTrajets[i]->getDestination(), destination, utilise, parcours, index + 1, count);
+                Recherche(tabTrajets[i]->getDestination(), destination, utilise, parcours, index + 1, count);
                 utilise[i]=false;
             }
         }
@@ -77,7 +77,7 @@ Catalogue::Catalogue ( const Catalogue & unCatalogue ) : TabTrajets(unCatalogue.
     cout << "Appel au constructeur de copie de <Catalogue>" << endl;
 #endif
     for(int i=0;i<unCatalogue.nElements;i++){
-        ajouterTrajet(*unCatalogue.tabTrajets[i]);
+        AjouterTrajet(*unCatalogue.tabTrajets[i]);
     }
 } //----- Fin de Catalogue (constructeur de copie)
 

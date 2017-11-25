@@ -29,23 +29,23 @@ using namespace std;
 //
 //{
 //} //----- Fin de Méthode
-bool TabTrajets::ajouterTrajet(const Trajet & t)
+bool TabTrajets::AjouterTrajet(const Trajet &t)
 {
     bool ajuste = false;
     if(nElements >= taille){
-        ajusterTaille(1);
+        AjusterTaille(1);
         ajuste=true;
     }
-    tabTrajets[nElements] = t.clone();
+    tabTrajets[nElements] = t.Clone();
     ++nElements;
     return ajuste;
 }
 
-bool TabTrajets::ajouterTrajet( char * depart, char * destination,crduTransport transport)
+bool TabTrajets::AjouterTrajet(char *depart, char *destination, crduTransport transport)
 {
     bool ajuste = false;
     if(nElements >= taille){
-        ajusterTaille(1);
+        AjusterTaille(1);
         ajuste=true;
     }
     tabTrajets[nElements] = new TrajetSimple(depart,destination,transport);
@@ -54,18 +54,18 @@ bool TabTrajets::ajouterTrajet( char * depart, char * destination,crduTransport 
 
 }
 
-bool TabTrajets::ajouterTrajet(char **departs, char **destinations, crduTransport *transports)
+bool TabTrajets::AjouterTrajet(char **departs, char **destinations, crduTransport *transports)
 {
     bool ajuste = false;
     if(nElements >= taille){
-        ajusterTaille(1);
+        AjusterTaille(1);
         ajuste=true;
     }
     int nbElements = sizeof(transports)/sizeof(crduTransport);
 
     TrajetCompose * tc = new TrajetCompose(nbElements);
     for(int i=0;i<nbElements;i++){
-        tc->ajouterTrajet(departs[i],destinations[i],transports[i]);
+        tc->AjouterTrajet(departs[i], destinations[i], transports[i]);
     }
     tabTrajets[nElements] = tc;
     ++nElements;
@@ -87,7 +87,7 @@ int TabTrajets::getTaille() const
     return taille;
 }
 
-bool TabTrajets::ajusterTaille(int delta)
+bool TabTrajets::AjusterTaille(int delta)
 {
     if(delta + taille < nElements)
         return false;
@@ -101,12 +101,12 @@ bool TabTrajets::ajusterTaille(int delta)
     delete [] aux;
 }
 
-void TabTrajets::afficher() const
+void TabTrajets::Afficher() const
 {
     for(int i=0;i<nElements;i++)
     {
         cout<<i+1<<" : ";
-        tabTrajets[i]->afficher();
+        tabTrajets[i]->Afficher();
         cout<<endl;
     }
 }
@@ -143,7 +143,7 @@ TabTrajets::TabTrajets (const TabTrajets & tab){
     nElements = 0;
     tabTrajets = new Trajet * [taille];
     for(int i=0;i<tab.nElements;i++){
-        ajouterTrajet(*tab.tabTrajets[i]);
+        AjouterTrajet(*tab.tabTrajets[i]);
     }
 
 }

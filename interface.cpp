@@ -36,7 +36,7 @@ int main(){
     int ordre;
     cout<<"1: ajouter un trajet simple"<<endl;
     cout<<"2: ajouter un trajet compose"<<endl;
-    cout<<"3: afficher la liste de trajets"<<endl;
+    cout<<"3: Afficher la liste de trajets"<<endl;
     cout<<"4: rechercher un parcours"<<endl<<endl;
     cout<<"tapez le numero de l'action que vous voulez realiser"<<endl;
     while(cin>>ordre && ordre !=-1){
@@ -49,7 +49,7 @@ int main(){
                 char destination[50];
                 cin >> destination;
                 crduTransport transport = getTransport();
-                catalogue.ajouterTrajet(depart, destination, transport);
+                catalogue.AjouterTrajet(depart, destination, transport);
                 cout<<endl;
                 break;
             }
@@ -66,14 +66,14 @@ int main(){
                     char destination[50];
                     cin >> destination;
                     crduTransport transport = getTransport();
-                    tc.ajouterTrajet(depart, destination, transport);
+                    tc.AjouterTrajet(depart, destination, transport);
                 }
-                catalogue.ajouterTrajet(tc);
+                catalogue.AjouterTrajet(tc);
                 break;
             }
             case 3: {
                 cout << "le catalogue contient:" << endl;
-                catalogue.afficher();
+                catalogue.Afficher();
                 cout<<endl;
                 break;
             }
@@ -89,9 +89,9 @@ int main(){
                 char destination[50];
                 cin >> destination;
                 cout << "avec les les trajets disponibles:" << endl;
-                catalogue.afficher();
+                catalogue.Afficher();
                 cout << "vous pouvez aller de " << depart << " a " << destination << " avec:"<<endl;
-                catalogue.recherche(depart,destination);
+                catalogue.Recherche(depart,destination);
                 cout<<endl;
 
                 break;
@@ -101,7 +101,7 @@ int main(){
         }
         cout<<"1: ajouter un trajet simple"<<endl;
         cout<<"2: ajouter un trajet compose"<<endl;
-        cout<<"3: afficher la liste de trajets"<<endl;
+        cout<<"3: Afficher la liste de trajets"<<endl;
         cout<<"4: rechercher un parcours"<<endl<<endl;
         cout<<"tapez le numero de l'action que vous voulez realiser"<<endl;
 

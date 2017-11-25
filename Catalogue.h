@@ -34,7 +34,7 @@ public:
     //
     // Contrat :
     //
-    int recherche(const char* depart,const char * destination) const;
+    int Recherche(const char *depart, const char *destination) const;
 
 
 
@@ -61,7 +61,7 @@ public:
 
 protected:
 //----------------------------------------------------- Méthodes protégées
-    void recherche(const char *depart, const char *destination, bool *utilise, int *parcours, int index, int &count) const;
+    void Recherche(const char *depart, const char *destination, bool *utilise, int *parcours, int index, int &count) const;
 
 //----------------------------------------------------- Attributs protégés
 

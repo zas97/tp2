@@ -35,9 +35,9 @@ public:
     // Contrat :
     //
 
-    virtual void afficher() const = 0;
+    virtual void Afficher() const = 0;
 
-    virtual Trajet* clone() const = 0;
+    virtual Trajet* Clone() const = 0;
 
     virtual const char * getDestination() const = 0;
 

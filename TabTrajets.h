@@ -1,9 +1,9 @@
 /*************************************************************************
                            TabTrajets  -  description
                              -------------------
-    début                : $DATE$
-    copyright            : (C) $YEAR$ par $AUTHOR$
-    e-mail               : $EMAIL$
+    début                : 3/12/2017
+    copyright            : (C) 2017 par Joan Capell, Hua Yang
+    e-mail               : joan.capell-gracia@insa-lyon.fr
 *************************************************************************/
 
 //---------- Interface de la classe <TabTrajets> (fichier TabTrajets.h) ----------------
@@ -21,66 +21,104 @@
 
 //------------------------------------------------------------------ Types
 
-//------------------------------------------------------------------------
-// Rôle de la classe <TabTrajets>
-//
-//
-//------------------------------------------------------------------------
+/**
+ * declaration de la classe Trajet compose
+ * pour indiquer à TabTrajets que TrajetCompose
+ * existe. Il est pas posible de incluir TrajetCompose.h
+ * parce que TrajetCompose inclu TabTrajets
+ */
 class TrajetCompose;
 
+
+/**
+ * Collection de Trajets qui
+ * peuvent etre simples et composes
+ * cet classe est utilisé par TrajetCompose et Catalogue
+ */
 class TabTrajets
 {
 //----------------------------------------------------------------- PUBLIC
 
 public:
 //----------------------------------------------------- Méthodes publiques
+    /**
+     * le methode fait une copie du trajet passe en parametre
+     * et ajoute cette copie dans le tableau de trajets
+     * si le tableau est plein il augmente la taille du tableau en 1
+     * pour pouvoir ajouter le trajet
+     * @param t trajet à ajouter
+     * @return vrais si la taille du tableau a ete modifie pour ajouter
+     *         faux si la taille n'a pas ete modifie
+     */
     bool AjouterTrajet(const Trajet &t);
-    // type Méthode ( liste des paramètres );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
+
+
+
+
+    /**
+     * le methode cree un TrajetSimple et ajoute ce Trajet dans
+     * le tableau de trajets si le tableau est plein
+     * il augmente la taille du tableau en 1 pour pouvoir ajouter le trajet
+     * @param depart nom ville de depart
+     * @param destination nom de la ville de arrive
+     * @param transport transport utilise
+     * @return vrais si la taille du tableau a ete modifie pour ajouter
+     *         faux si la taille n'a pas ete modifie
+     */
     bool AjouterTrajet(char *depart, char *destination, crduTransport transport);
-    // type Méthode ( liste des paramètres );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
+
+
+
+
+    /**
+     * le methode cree un TrajetCompose
+     * forme par des Trajets simples et ajoute ce Trajet dans
+     * le tableau de trajets si le tableau est plein
+     * il augmente la taille du tableau en 1pour pouvoir ajouter le trajet
+     * @param departs liste de villes de depart
+     * @param destinations liste de villes d'arrive
+     * @param transports liste des transports
+     * @return vrais si la taille du tableau a ete modifie pour ajouter
+     *         faux si la taille n'a pas ete modifie
+     */
     bool AjouterTrajet(char **departs, char **destinations, crduTransport *transports);
-    // type Méthode ( liste des paramètres );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
+
+
+    /**
+     * @param pos position element renvoyer
+     * @return element du tableau situe en @pos
+     */
     Trajet * getElement(int pos) const;
-    // type Méthode ( liste des paramètres );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
+
+
+
+    /**
+     * @return taille du tableau
+     */
     int getTaille() const;
-    // type Méthode ( liste des paramètres );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
+
+
+    /**
+     * affiche chaque element du tableau separe par une saute de ligne
+     */
     virtual void Afficher() const;
-    // type Méthode ( liste des paramètres );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
+
+    /**
+     *
+     * @return nombre de cases ocupes dans le tableau
+     */
     int getNelements() const;
-    // type Méthode ( liste des paramètres );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
+
+
+    /**
+     * ajuste la taille du tableau à taille+delta
+     * il fait rien en cas de que delta <0 et l'ajustement
+     * du tableau suppose la supresion des elements
+     * @param delta
+     * @return vrais si l'ajustement a ete fait
+     *         faux si l'ajustament n'a pas ete fait
+     */
     bool AjusterTaille(int delta);
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
 
 //------------------------------------------------- Surcharge d'opérateurs
 
@@ -88,19 +126,27 @@ public:
 
 //-------------------------------------------- Constructeurs - destructeur
 
+    /**
+     * constructeur par copie, il fait un copie de chaque
+     * element de tabTrajets et il l'alloue dans la copie de
+     * tabTrajets
+     * @param tab TabTrajets aà copier
+     */
     TabTrajets(const TabTrajets & tab);
 
-    TabTrajets ( int t );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
 
+    /**
+     * Constructeur de TabTrajets de taille t
+     * @param t taille
+     */
+    TabTrajets ( int t );
+
+    /**
+     * destructeur de TabTrajet
+     * les Trajets contenus dans tabTrajet vont être detruits aussi
+     */
     virtual ~TabTrajets ( );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
+
 
 //------------------------------------------------------------------ PRIVE
 
@@ -108,8 +154,11 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
+    //nombre de cases totales dans le tableau
     int taille;
+    //tableau de pointeurs de type trajet
     Trajet ** tabTrajets;
+    //nombre de cases occupes dans le trajet
     int nElements;
 
 };

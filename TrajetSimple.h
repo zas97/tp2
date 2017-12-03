@@ -1,9 +1,9 @@
 /*************************************************************************
                            TrajetSimple  -  description
                              -------------------
-    début                : $DATE$
-    copyright            : (C) $YEAR$ par $AUTHOR$
-    e-mail               : $EMAIL$
+    début                : 3/12/2017
+    copyright            : (C) 2017 par Joan Capell, Hua Yang
+    e-mail               : joan.capell-gracia@insa-lyon.fr
 *************************************************************************/
 
 //---------- Interface de la classe <TrajetSimple> (fichier TrajetSimple.h) ----------------
@@ -13,70 +13,83 @@
 #include "Trajet.h"
 
 //--------------------------------------------------- Interfaces utilisées
-
+    //Trajet
 //------------------------------------------------------------- Constantes
-
 //------------------------------------------------------------------ Types
+
 enum crduTransport { Train,Auto,Bateau,Avion };
 
-//------------------------------------------------------------------------
-// Rôle de la classe <TrajetSimple>
-//
-//
-//------------------------------------------------------------------------
-
+/**
+ * TrajetSimple qui contient
+ * la ville de depart la ville d'arrive
+ * et le moyen de transport
+ */
 class TrajetSimple : public Trajet
 {
 //----------------------------------------------------------------- PUBLIC
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    // type Méthode ( liste des paramètres );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
 
 
+    /**
+     * @return nom ville d'arrive
+     */
     virtual const char * getDestination() const;
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
 
+
+
+    /**
+     *
+     * @return nom ville de depart
+     */
     virtual const char * getDepart() const;
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
 
+
+    /**
+     * affiche la ville de depart
+     * la ville d'arrive
+     * et le moyen de transport
+     */
     virtual void Afficher() const;
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
+
+
+    /**
+     * creation d'une clone de TrajetSimple
+     * @return pointeur vers le clone crée
+     */
     virtual TrajetSimple * Clone() const;
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
+
 
 
 //-------------------------------------------- Constructeurs - destructeur
 
-
+    /**
+     * Constructeur du trajet simple
+     * @param depart nom ville de depart
+     * @param destination nom ville d'arrive
+     * @param trans transport utilisé
+     */
     TrajetSimple (const char * depart, const char * destination, crduTransport trans);
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
+
+
+
+    /**
+     * Constructeur de TrajetSimple par copie
+     * il s'agit d'une copie en profondeur
+     * donc un nouveau TrajetSimple est ajouté
+     * dans le tas
+     * @param t TrajetSimple à copier
+     */
     TrajetSimple(const TrajetSimple & t);
 
+
+
+    /**
+     * destructeur de TrajetSimple
+     */
     virtual ~TrajetSimple ( );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
+
 
 //------------------------------------------------------------------ PRIVE
 

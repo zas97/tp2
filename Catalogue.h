@@ -1,9 +1,9 @@
 /*************************************************************************
                            Catalogue  -  description
                              -------------------
-    début                : $DATE$
-    copyright            : (C) $YEAR$ par $AUTHOR$
-    e-mail               : $EMAIL$
+    début                : 3/12/2017
+    copyright            : (C) 2017 par Joan Capell, Hua Yang
+    e-mail               : joan.capell-gracia@insa-lyon.fr
 *************************************************************************/
 
 //---------- Interface de la classe <Catalogue> (fichier Catalogue.h) ----------------
@@ -17,50 +17,70 @@
 
 //------------------------------------------------------------------ Types
 
-//------------------------------------------------------------------------
-// Rôle de la classe <Catalogue>
-//
-//
-//------------------------------------------------------------------------
 
+/**
+ * Catalogue contient une colection des trajets
+ * qui peuvent être simples ou composes
+ */
 class Catalogue : public TabTrajets
 {
 //----------------------------------------------------------------- PUBLIC
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    // type Méthode ( liste des paramètres );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
+    /**
+     *
+     * Recherche et affiche les combinaison de Trajets du catalogue pour
+     * aller de depart a destination
+     * @param depart nom ville de depart
+     * @param destination nom ville de destination
+     * @return nombre de posibles combinaison pour aller de depart a destination
+     */
     int Recherche(const char *depart, const char *destination) const;
 
 
-
 //-------------------------------------------- Constructeurs - destructeur
+    /**
+     * Constructeur de copie
+     * il s'agit d'une copie en profondeur
+     * donc un nouveau Catalogue est cree dans le tas
+     * @param unCatalogue
+     */
     Catalogue ( const Catalogue & unCatalogue );
-    // Mode d'emploi (constructeur de copie) :
-    //
-    // Contrat :
-    //
 
+
+
+    /**
+     * Constructeur du Catalogue vide de taille t
+     *
+     * @param t taille
+     * Contrat:
+     *      t>0
+     */
     Catalogue ( int t );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
 
+
+
+    /**
+     * Destructeur de catalogue
+     * les Trajets qui compose ce Trajet compose
+     * vont être detruits aussi
+     */
     virtual ~Catalogue ( );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
 
 //------------------------------------------------------------------ PRIVE
 
 protected:
 //----------------------------------------------------- Méthodes protégées
+    /**
+     * methode utilise par le methode publique Recherche
+     * @param depart
+     * @param destination
+     * @param utilise
+     * @param parcours
+     * @param index
+     * @param count
+     */
     void Recherche(const char *depart, const char *destination, bool *utilise, int *parcours, int index, int &count) const;
 
 //----------------------------------------------------- Attributs protégés

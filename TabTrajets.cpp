@@ -1,9 +1,9 @@
 /*************************************************************************
                            TabTrajets  -  description
                              -------------------
-    début                : $DATE$
-    copyright            : (C) $YEAR$ par $AUTHOR$
-    e-mail               : $EMAIL$
+    début                : 3/12/2017
+    copyright            : (C) 2017 par Joan Capell, Hua Yang
+    e-mail               : joan.capell-gracia@insa-lyon.fr
 *************************************************************************/
 
 //---------- Réalisation de la classe <TabTrajets> (fichier TabTrajets.cpp) ------------

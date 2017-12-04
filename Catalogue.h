@@ -34,7 +34,7 @@ public:
      * aller de depart a destination
      * @param depart nom ville de depart
      * @param destination nom ville de destination
-     * @return nombre de posibles combinaison pour aller de depart a destination
+     * @return nombre de posibles combinaisons des trajets pour aller de depart a destination
      */
     int Recherche(const char *depart, const char *destination) const;
 
@@ -73,7 +73,8 @@ public:
 protected:
 //----------------------------------------------------- Méthodes protégées
     /**
-     * methode utilise par le methode publique Recherche
+     * methode utilise par le methode publique Recherche, on a besoin
+     * de cet methode pour utiliser l'algorithme de la recursivité
      * @param depart
      * @param destination
      * @param utilise

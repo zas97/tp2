@@ -45,6 +45,8 @@ void ajouterTrajets2(Catalogue & catalogue){
     catalogue.AjouterTrajet(ts3);
 
     catalogue.AjouterTrajet("Bordeaux","Paris",Train);
+    Catalogue c2(catalogue);
+    c2.Afficher();
 
 
 }

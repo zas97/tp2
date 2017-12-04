@@ -75,16 +75,22 @@ public:
      * forme par des Trajets simples et ajoute ce Trajet dans
      * le tableau de trajets si le tableau est plein
      * il augmente la taille du tableau en 1pour pouvoir ajouter le trajet
+     * contraintes:
+     *          le nombre d'elements de departs destinations et transport
+     *          doit etre egal
      * @param departs liste de villes de depart
      * @param destinations liste de villes d'arrive
      * @param transports liste des transports
      * @return vrais si la taille du tableau a ete modifie pour ajouter
      *         faux si la taille n'a pas ete modifie
+     *
      */
     bool AjouterTrajet(char **departs, char **destinations, crduTransport *transports);
 
 
     /**
+     * contraintes:
+     *          pos < taille
      * @param pos position element renvoyer
      * @return element du tableau situe en @pos
      */

@@ -36,10 +36,12 @@ void TrajetCompose::Afficher() const{
 
 }
 const char * TrajetCompose::getDepart() const{
+    //le deapart est la ville de depart du premier trajet
     return tabTrajets[0]->getDepart();
 }
 
 const char * TrajetCompose::getDestination() const{
+    //la destination est la ville d'arrive du dernier trajet
     return tabTrajets[nElements-1]->getDestination();
 }
 
@@ -75,11 +77,9 @@ TrajetCompose::TrajetCompose ( const TabTrajets & tab ) : TabTrajets(tab)
 
 } //----- Fin de TrajetCompose
 
-TrajetCompose::TrajetCompose(const TrajetCompose & t) : TabTrajets(t.taille)
+TrajetCompose::TrajetCompose(const TrajetCompose & t) : TabTrajets(t)
 {
-    for(int i=0;i<t.nElements;i++){
-        AjouterTrajet(*t.tabTrajets[i]);
-    }
+
 }
 
 TrajetCompose::~TrajetCompose() {

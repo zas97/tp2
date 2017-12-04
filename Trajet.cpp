@@ -22,16 +22,10 @@ using namespace std;
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-// type Trajet::Méthode ( liste des paramètres )
-// Algorithme :
-//
-//{
-//} //----- Fin de Méthode
+
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-
-
 
 //-------------------------------------------- Constructeurs - destructeur
 
@@ -60,9 +54,6 @@ Trajet::~Trajet ( )
 
 } //----- Fin de ~Trajet
 
-//void Trajet::Afficher(void) const{}
-//const char * Trajet::getDestination() const{}
-//const char * Trajet::getDepart() const{}
 
 
 //------------------------------------------------------------------ PRIVE

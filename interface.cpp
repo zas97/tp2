@@ -5,7 +5,18 @@
 using namespace std;
 
 
+
+
+
+
+/**
+ * c'est methode permet à l'utilisateur de choisir un moyen de transport
+ * dans la liste des moyens disponible
+ * @return moyen de transport choisit
+ */
 crduTransport getTransport(){
+    //il demande de nouveau le trajet si l'utilisateur
+    //ne saisit pas correctement
     while(true) {
         cout << "1: Train" << endl;
         cout << "2: Auto" << endl;
@@ -28,11 +39,17 @@ crduTransport getTransport(){
 
 
 int main(){
+    //d'abord l'utilisateur choisi une taille pour le catalogue
+    //la taille du Catalogue s'ajuste automatiquement si on veut
+    //ajouter un trajet et le catalogue est plein, donc il doit pas
+    //etre 100% precis ici
     cout<<"introduisez le nombre de trajets que vous allez mettre dans le catalogue"<<endl;
     cout<<"si vous savez pas exactement c'est pas grave, taper une aproximation"<<endl;
     int taille;
     cin>>taille;
     Catalogue catalogue(taille);
+
+    //l'utilisateur choisi c'est qu'il veut faire avec le catalogue
     int ordre;
     cout<<"1: ajouter un trajet simple"<<endl;
     cout<<"2: ajouter un trajet compose"<<endl;
@@ -41,6 +58,7 @@ int main(){
     cout<<"tapez le numero de l'action que vous voulez realiser, tapez -1 pour sortir"<<endl;
     while(cin>>ordre && ordre !=-1){
         switch(ordre){
+            //ajouter un trajet simple
             case 1 : {
                 cout << "ecrivez la ville de depart:" << endl;
                 char depart[50];
@@ -53,6 +71,7 @@ int main(){
                 cout<<endl;
                 break;
             }
+            //ajouter un trajet compose
             case 2 : {
                 cout << "ecrivez le nombre de trajets conetnus" << endl;
                 int nTrajets;
@@ -71,13 +90,17 @@ int main(){
                 catalogue.AjouterTrajet(tc);
                 break;
             }
+            //afficher ce qu'il y a dans le catalogue
             case 3: {
                 cout << "le catalogue contient:" << endl;
                 catalogue.Afficher();
                 cout<<endl;
                 break;
             }
+            //rechercher un parcours entre de villes
+
             case 4: {
+                //il realise pas de recherche si le catalogue est plein
                 if(catalogue.getNelements()==0){
                     cout<<"Il y a pas des trajets"<<endl;
                     break;
@@ -96,6 +119,7 @@ int main(){
 
                 break;
             }
+            //en cas ou l'utilisateur saisit un numero qui est pas dans la liste
             default :{
                 cout<<"s'il tu plait, selectione un ordre dans la liste"<<endl;
                 cout<<endl;

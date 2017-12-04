@@ -23,11 +23,12 @@ using namespace std;
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-// type TabTrajets::Méthode ( liste des paramètres )
-// Algorithme :
-//
-//{
-//} //----- Fin de Méthode
+/**
+ * ajoute UNE COPIE du trajet passe en parametre
+ * @param t trajet a ajouter
+ * @return vrais: modification de taille lors l'ajoute
+ *         faux: pas de modification de taill
+ */
 bool TabTrajets::AjouterTrajet(const Trajet &t)
 {
     bool ajuste = false;
@@ -35,6 +36,7 @@ bool TabTrajets::AjouterTrajet(const Trajet &t)
         AjusterTaille(1);
         ajuste=true;
     }
+    //clone realise la copie et on l'ajoute au tableau
     tabTrajets[nElements] = t.Clone();
     ++nElements;
     return ajuste;
@@ -62,10 +64,15 @@ bool TabTrajets::AjouterTrajet(char **departs, char **destinations, crduTranspor
     }
     int nbElements = sizeof(transports)/sizeof(crduTransport);
 
+    //on cree le nouveau trajet compose
     TrajetCompose * tc = new TrajetCompose(nbElements);
+
+    //on lui ajoute les trajets simples descrits par les parametres
     for(int i=0;i<nbElements;i++){
         tc->AjouterTrajet(departs[i], destinations[i], transports[i]);
     }
+
+    //on l'ajout au tableau
     tabTrajets[nElements] = tc;
     ++nElements;
     return ajuste;
@@ -88,15 +95,21 @@ int TabTrajets::getTaille() const
 
 bool TabTrajets::AjusterTaille(int delta)
 {
+    //cas ou on devrait suprimer des elements pour ajuster la taille
     if(delta + taille < nElements)
         return false;
+
     taille += delta;
+    //on fait un nouveau tableau avec la nouveau taille
     Trajet ** newTab = new Trajet* [taille];
+    //on passe les elements du vieille tableau au nouveau
     for(int i=0;i<nElements;i++){
         newTab[i] = tabTrajets[i];
     }
+
     Trajet ** aux = tabTrajets;
     tabTrajets = newTab;
+    //on suprime le vieille tableau
     delete [] aux;
     return true;
 }
@@ -142,12 +155,18 @@ TabTrajets::TabTrajets (const TabTrajets & tab){
     taille = tab.taille;
     nElements = 0;
     tabTrajets = new Trajet * [taille];
+    //copie en profondeur donc on doit copie
+    //chaqun des elements dans TabTrajets
     for(int i=0;i<tab.nElements;i++){
         AjouterTrajet(*tab.tabTrajets[i]);
     }
 
 }
-
+/**
+ * dans le destructeur il faut suprimer tous les elements
+ * pointes par le tableau, car on les a ajouté en faisant des copies
+ * et suprime le tableau
+ */
 TabTrajets::~TabTrajets ( )
 // Algorithme :
 //
